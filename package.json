@@ -1,0 +1,20 @@
+{
+  "name": "colours-in-the-sky",
+  "version": "1.0.0",
+  "description": "Ecomerce Colours in the Sky.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FGDGines/Colours-in-the-sky.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FGDGines/Colours-in-the-sky/issues"
+  },
+  "homepage": "https://github.com/FGDGines/Colours-in-the-sky#readme"
+}
