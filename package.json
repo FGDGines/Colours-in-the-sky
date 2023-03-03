@@ -1,5 +1,6 @@
 {
   "name": "colours-in-the-sky",
+  "private": true,
   "version": "1.0.0",
   "description": "Ecomerce Colours in the Sky.",
   "main": "index.js",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/FGDGines/Colours-in-the-sky/issues"
   },
-  "homepage": "https://github.com/FGDGines/Colours-in-the-sky#readme"
+  "homepage": "https://github.com/FGDGines/Colours-in-the-sky#readme",
+  "devDependencies": {
+    "standard": "17.0.0"
+  }
 }
