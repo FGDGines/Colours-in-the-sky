@@ -15,7 +15,8 @@
   "scripts": {
     "build": "npm run build --workspace=front",
     "start": "npm run start --workspace=front",
-    "dev": "npm run dev --workspace=front"
+    "dev": "npm run dev --workspace=front",
+    "lint": "eslint ./front ./back"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,11 @@
     "standard": "17.0.0"
   },
   "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
+    "extends": "./node_modules/standard/eslintrc.json",
+    "ignorePatterns": [
+      "front/node_modules",
+      "front/build",
+      "back/node_modules"
+    ]
   }
 }
