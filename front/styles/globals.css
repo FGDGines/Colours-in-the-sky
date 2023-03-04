@@ -30,6 +30,7 @@ a {
 .main-container {
   max-width: 1400px;
   margin: auto;
+  padding: 0 10px;
   width: 100%;
 
 }
@@ -93,7 +94,7 @@ span.text-red {
 
 }
 
-.cart-icon {
+.menu-icon {
   font-size: 25px;
   color: gray;
   cursor: pointer;
@@ -103,8 +104,13 @@ span.text-red {
   background-color: transparent;
 }
 
-.cart-icon:hover {
-  transform: scale(1.1, 1.1);
+.cart-icon {
+  font-size: 25px;
+  color: gray;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background-color: transparent;
 }
 
 .cart-item-qty {
@@ -281,7 +287,7 @@ span.text-red {
 }
 
 .banner-desc button {
-  border-radius: 15px;
+  border-radius: var(--btn-rounded);
   padding: 10px 16px;
   background-color: var(--white);
   color: red;
@@ -304,10 +310,10 @@ span.text-red {
 
 .footer-banner-image {
   position: absolute;
-  /* top: -35%;
-  left: 8%; */
   top: -25%;
   left: 25%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
 }
 
 .banner-desc .right {
@@ -481,7 +487,7 @@ span.text-red {
   width: 100%;
   max-width: 400px;
   padding: 10px 12px;
-  border-radius: 15px;
+  border-radius: var(--btn-rounded);
   border: none;
   font-size: 20px;
   margin-top: 40px;

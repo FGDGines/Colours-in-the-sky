@@ -1,0 +1,16 @@
+[
+  {
+    "image": "/assets/zapatos.png",
+    "alt": "puede ser una imagen de unos zapatos",
+    "buttonText": "Compra ahora",
+    "product": "puma-suede",
+    "description": "Tiene esta gran promoción",
+    "smallText": "¡Aprovecha Ahora!",
+    "midText": "Puma para ti",
+    "largeText1": "Puma",
+    "largeText2": "Suede",
+    "discount": "50% OFF",
+    "saleTime": "15 Mar to 15 Apr"
+  }
+]
+

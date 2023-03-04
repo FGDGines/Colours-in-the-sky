@@ -1,0 +1,15 @@
+[
+  {
+    "image": "/assets/zapatos.png",
+    "alt": "puede ser una imagen de unos zapatos",
+    "buttonText": "Comprar Ahora",
+    "product": "Headphones",
+    "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "smallText": "Promoción",
+    "midText": "Puma Suede",
+    "largeText1": "La nueva era",
+    "largeText2": "SMILE",
+    "discount": "50% OFF",
+    "saleTime": "15 Mar to 15 Apr"
+  }
+]
