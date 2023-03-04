@@ -4,6 +4,7 @@
     "name": "Puma Suede",
     "slug": "puma-suede",
     "image": ["/assets/zapatos.png"],
+    "category": "zapatos",
     "price": 99,
     "details": "Inmense in the amazing sound"
   },
@@ -11,7 +12,8 @@
     "id": 2,
     "name": "Nike Blazer",
     "slug": "nike-blazer",
-    "image": ["/assets/zapatos.png"],
+    "image": ["/assets/zapatos.png", "/assets/logo.png"],
+    "category": "zapatos",
     "price": 99,
     "details": "Inmense in the amazing sound"
   },
@@ -20,6 +22,7 @@
     "name": "Nike Air Force 1",
     "slug": "nike-air-force-1",
     "image": ["/assets/zapatos.png"],
+    "category": "zapatos",
     "price": 99,
     "details": "Inmense in the amazing sound"
   }
