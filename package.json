@@ -16,6 +16,7 @@
     "build": "npm run build --workspace=front",
     "start": "npm run start --workspace=front",
     "dev": "npm run dev --workspace=front",
+    "server": "npm run dev --workspace=back",
     "lint": "eslint ./front ./back"
   },
   "repository": {
