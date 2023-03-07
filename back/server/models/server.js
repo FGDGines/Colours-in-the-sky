@@ -45,9 +45,11 @@ class Server {
 
   routes () {
     // Rutas post
-    this.app.use(require('../routes/get'))
+    this.app.use('', require('../routes/get'))
     // Rutas get
-    this.app.use(require('../routes/post'))
+    this.app.use('', require('../routes/post'))
+    // Rutas API
+    this.app.use('/api', require('../routes/api'))
   }
 
   run () {
