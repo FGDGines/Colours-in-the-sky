@@ -6,6 +6,7 @@ const setProducto = require('../controllers/setProducto')
 const addProducto = require('../controllers/addProducto')
 const { validarCampos } = require('../middlewares/validarCampos')
 const removeImagenProducto = require('../controllers/removeImagenProducto')
+const addImagenProducto = require('../controllers/addImagenProductos')
 
 const app = Router()
 
@@ -31,4 +32,8 @@ app.post('/removeImagenProducto', [
   check('ipTarget', 'El nombre de la imagen que eliminará es obligatorio').not().isEmpty(),
   validarCampos
 ], removeImagenProducto)
+
+app.post('/addImagenProducto', [
+  check('ipId', 'El id al cual agregará la imagen es obligatorio').isNumeric(),
+  validarCampos], addImagenProducto)
 module.exports = app

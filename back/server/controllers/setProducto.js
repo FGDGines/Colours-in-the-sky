@@ -55,7 +55,7 @@ const setProducto = async (req = request, res = response) => {
       } else {
         const categoria = await Categoria.findByPk(producto.category)
         const last = categoria.label
-        await producto.update(category)
+        await producto.update({ category })
         ediciones.category = {
           last, now: newCategory.label
         }
