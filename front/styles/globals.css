@@ -652,6 +652,7 @@ span.text-red {
 .quantity-desc .num {
   border-right: 1px solid gray;
   font-size: 20px;
+  user-select: none;
 }
 
 .quantity-desc .plus {
@@ -859,11 +860,13 @@ span.text-red {
 
   .buttons .add-to-cart {
     width: 100%;
+    user-select: none;
   }
 
   .buttons .buy-now {
     margin-top: 10px;
     width: 100%;
+    user-select: none;
   }
 
   .product-detail-container {
