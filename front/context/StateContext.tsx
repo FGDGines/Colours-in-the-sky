@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import { toast } from 'react-hot-toast'
+import type { Product, CartItem } from '../types.d.js'
 
 interface ContextProps {
   showCart: boolean
@@ -17,13 +18,13 @@ const Context = createContext<ContextProps>({} as ContextProps)
 
 export const StateContext = ({ children }: any) => {
   const [showCart, setShowCart] = useState(false)
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState<CartItem[]>([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalQuantities, setTotalQuantities] = useState(0)
   const [qty, setQty] = useState(1)
 
   // setters
-  const onAdd = (product: object, quantity: number) => {
+  const onAdd = (product: Product, quantity: number) => {
     const checkProductInCart = cartItems.find((item) => item.id === product.id)
 
     setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
