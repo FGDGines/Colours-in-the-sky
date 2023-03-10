@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import Link from 'next/link'
 import { AiOulineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai'
-import { TiDeleteOutline } from 'react-icons/ti'
-import { toast } from 'react-hot-toast'
+// import { TiDeleteOutline } from 'react-icons/ti'
+// import { toast } from 'react-hot-toast'
 
 import { useStateContext } from '@/context/StateContext'
 
@@ -41,7 +41,7 @@ export function Cart () {
 
         <div className='product-container'>
           {cartItems.lenght >= 1 && (
-            cartItems[0]?.map((item: any) => (
+            cartItems?.map((item: any) => (
               <div
                 className='product'
                 key={item.id}

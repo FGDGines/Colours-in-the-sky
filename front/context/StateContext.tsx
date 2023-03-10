@@ -1,9 +1,21 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { toast } from 'react-hot-toast'
 
-const Context = createContext()
+interface ContextProps {
+  showCart: boolean
+  cartItems: object[]
+  totalPrice: number
+  totalQuantities: number
+  qty: number
+  incQty: () => void
+  decQty: () => void
+  onAdd: (product: any, quantity: number) => void
+  setShowCart: (showCart: boolean) => void
+}
 
-export const StateContext = ({ children }) => {
+const Context = createContext<ContextProps>({} as ContextProps)
+
+export const StateContext = ({ children }: any) => {
   const [showCart, setShowCart] = useState(false)
   const [cartItems, setCartItems] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
@@ -11,7 +23,7 @@ export const StateContext = ({ children }) => {
   const [qty, setQty] = useState(1)
 
   // setters
-  const onAdd = (product, quantity) => {
+  const onAdd = (product: object, quantity: number) => {
     const checkProductInCart = cartItems.find((item) => item.id === product.id)
 
     setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
@@ -34,7 +46,7 @@ export const StateContext = ({ children }) => {
       setCartItems([...cartItems, { ...product }])
     }
 
-    toast.success(`${qty} ${product.name} added to the cart.`)
+    toast.success(`${qty} ${product[0].name} ${qty !== 1 ? 'añadidos' : 'añadido'} al carrito.`)
   }
 
   const incQty = () => setQty((prevQty) => prevQty + 1)
