@@ -40,7 +40,7 @@ export function Cart () {
         )}
 
         <div className='product-container'>
-          {cartItems.lenght >= 1 && (
+          {cartItems.length >= 1 && (
             cartItems?.map((item: any) => (
               <div
                 className='product'

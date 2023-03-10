@@ -1,5 +1,16 @@
+export interface ProductType {
+  id: number;
+  name: string;
+  slug: string;
+  image: string[];
+  alt: string;
+  category: string;
+  price: number;
+  details: string;
+  quantity?: number;
+}
 
-export interface Product {
+export interface CartType {
   id: number;
   name: string;
   slug: string;
@@ -7,9 +18,5 @@ export interface Product {
   category: string;
   price: number;
   details: string;
-}
-
-export type CartItem = {
-  product: Product,
-  quantity: number
+  quantity: number;
 }

@@ -1,15 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import type { ProductType } from '../types.d.js'
 
 type ProductProps = {
-  product: {
-    id: number
-    name: string
-    slug: string
-    image: string[]
-    price: number
-    details: string
-  }
+  product: ProductType
 }
 
 export function Product ({ product }: ProductProps) {

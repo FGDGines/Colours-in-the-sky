@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { ProductType } from '../../types.d.js'
 import productsData from '../../data/product.json'
 import { Product } from '@/components'
 import {
@@ -10,10 +11,15 @@ import {
 
 import { useStateContext } from '@/context/StateContext'
 
-export default function ProductDetails ({ product, products }) {
+interface Props {
+  product: ProductType
+  products: ProductType[]
+}
+
+export default function ProductDetails ({ product, products }: Props) {
   const [index, setIndex] = useState(0)
-  const { image, alt, name, details, price } = product[0]
   const { decQty, incQty, qty, onAdd } = useStateContext()
+  const { image, alt, name, details, price } = product
   return (
     <div>
       <div className='product-detail-container'>
@@ -21,16 +27,16 @@ export default function ProductDetails ({ product, products }) {
           <div className='image-container'>
             <img
               className='product-detail-image'
-              src={image[index]}
-              alt={alt}
+              src={image && image[index]}
+              alt={alt && alt}
             />
           </div>
           <div className='small-images-container'>
-            {image?.map((image, i) => (
+            {image?.map((src, i) => (
               <img
                 className={`small-image ${i === index && 'selected-image'}`}
                 key={i}
-                src={image}
+                src={src}
                 alt={alt}
                 onMouseEnter={() => setIndex(i)}
               />
@@ -105,13 +111,13 @@ export async function getStaticPaths () {
   }
 }
 
-export async function getStaticProps ({ params: { slug } }) {
+export async function getStaticProps ({ params: { slug } }: any) {
   const query = productsData.filter((product) => product.slug === slug)
   const productQuery = productsData.filter(
     (product) => product.category !== slug
   )
 
-  const product = query
+  const product = query[0]
   const products = productQuery
 
   return {

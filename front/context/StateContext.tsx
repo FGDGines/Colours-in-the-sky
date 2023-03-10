@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import { toast } from 'react-hot-toast'
-import type { Product, CartItem } from '../types.d.js'
-import { CartItem, Product } from '../types'
+import type { ProductType, CartType } from '../types.d.js'
 
 interface ContextProps {
   showCart: boolean
@@ -11,45 +10,44 @@ interface ContextProps {
   qty: number
   incQty: () => void
   decQty: () => void
-  onAdd: (product: any, quantity: number) => void
   setShowCart: (showCart: boolean) => void
+  onAdd: (product: ProductType, quantity: number) => void
 }
 
 const Context = createContext<ContextProps>({} as ContextProps)
 
 export const StateContext = ({ children }: any) => {
   const [showCart, setShowCart] = useState(false)
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, setCartItems] = useState<CartType[]>([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalQuantities, setTotalQuantities] = useState(0)
   const [qty, setQty] = useState(1)
 
-  // setters
-  const onAdd = (product: Product, quantity: number) => {
-    // Await en produccion !!
-    const checkProductInCart = cartItems?.find((item) => item.product.id === product.id)
+  const onAdd = (product: ProductType, quantity: number) => {
+    const checkProductInCart = cartItems.find((item) => item.id === product.id)
 
     setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity)
 
     if (checkProductInCart) {
-      const updatedCartItems = cartItems.map((cartProduct) => {
-        if (cartProduct.product.id === product.id) {
+      const updatedCartItems = cartItems.map(cartProduct => {
+        if (cartProduct.id === product.id) {
           return {
-            producto: cartProduct.product,
+            ...cartProduct,
             quantity: cartProduct.quantity + quantity
           }
         }
+
+        return cartProduct
       })
 
-      setCartItems(updatedCartItems)
+      setCartItems(updatedCartItems as CartType[])
     } else {
       product.quantity = quantity
-
-      setCartItems([...cartItems, { ...product }])
+      setCartItems([...cartItems, { ...product }] as CartType[])
     }
 
-    toast.success(`${qty} ${product[0].name} ${qty !== 1 ? 'añadidos' : 'añadido'} al carrito.`)
+    toast.success(`${qty} ${product.name} ${qty !== 1 ? 'añadidos' : 'añadido'} al carrito.`)
   }
 
   const incQty = () => setQty((prevQty) => prevQty + 1)
