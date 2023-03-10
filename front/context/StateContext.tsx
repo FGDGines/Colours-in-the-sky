@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import type { Product, CartItem } from '../types.d.js'
+import { CartItem, Product } from '../types'
 
 interface ContextProps {
   showCart: boolean
@@ -25,16 +26,17 @@ export const StateContext = ({ children }: any) => {
 
   // setters
   const onAdd = (product: Product, quantity: number) => {
-    const checkProductInCart = cartItems.find((item) => item.id === product.id)
+    // Await en produccion !!
+    const checkProductInCart = cartItems?.find((item) => item.product.id === product.id)
 
     setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity)
 
     if (checkProductInCart) {
       const updatedCartItems = cartItems.map((cartProduct) => {
-        if (cartProduct.id === product.id) {
+        if (cartProduct.product.id === product.id) {
           return {
-            ...cartProduct,
+            producto: cartProduct.product,
             quantity: cartProduct.quantity + quantity
           }
         }

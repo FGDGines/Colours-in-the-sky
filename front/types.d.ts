@@ -1,3 +1,4 @@
+
 export interface Product {
   id: number;
   name: string;
@@ -9,6 +10,6 @@ export interface Product {
 }
 
 export type CartItem = {
-  item: Product,
+  product: Product,
   quantity: number
 }
