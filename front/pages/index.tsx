@@ -1,7 +1,7 @@
 import { Product, FooterBanner, HeroBanner } from '../components'
-import product from '../data/product.json'
+import productsData from '../data/product.json'
 
-export default function Home () {
+export default function Home ({ product }) {
   return (
     <>
       <HeroBanner />
@@ -13,11 +13,22 @@ export default function Home () {
 
       <div className='products-container'>
         {
-          product?.map(product => <Product key={product.id} product={product} />)
+          product?.map(prod => <Product key={prod.id} product={prod} />)
         }
       </div>
 
       <FooterBanner />
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const query = productsData.map((product) => product)
+  const product = query
+
+  return {
+    props: {
+      product
+    }
+  }
 }

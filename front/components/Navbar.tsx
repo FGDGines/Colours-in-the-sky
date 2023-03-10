@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { AiOutlineShoppingCart, AiOutlineMenu } from 'react-icons/ai'
+import { Cart } from '@/components'
+import { useStateContext } from '@/context/StateContext'
 
 export function Navbar () {
+  const { showCart, setShowCart, totalQuantities } = useStateContext()
   return (
     <div className='navbar-container'>
 
@@ -22,10 +25,13 @@ export function Navbar () {
       <button
         type='button'
         className='cart-icon'
+        onClick={() => setShowCart(!showCart)}
       >
         <AiOutlineShoppingCart />
-        <span className='cart-item-qty'>1</span>
+        <span className='cart-item-qty'>{totalQuantities}</span>
       </button>
+
+      {showCart && <Cart />}
     </div>
   )
 }
