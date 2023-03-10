@@ -434,6 +434,9 @@ span.text-red {
   height: 150px;
   border-radius: 15px;
   background-color: var(--white-off);
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  padding: 0 10px;
 }
 
 .item-desc .flex {
