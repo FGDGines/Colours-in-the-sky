@@ -1,6 +1,7 @@
 :root {
   --btn-rounded: 8px;
   --red: #f02d34;
+  --red-hover: #9e1d21;
   --grey: #5f5f5f;
   --grey-blue: #324d67;
   --white: #fff;
@@ -500,12 +501,11 @@ span.text-red {
   background-color: var(--red);
   color: var(--white);
   cursor: pointer;
-  transform: scale(1, 1);
-  transition: transform 0.5s ease;
+  transition: 0.3s ease;
 }
 
 .btn:hover {
-  transform: scale(1.02);
+  background-color: var(--red-hover);
 }
 
 .product-detail-container {
@@ -610,11 +610,11 @@ span.text-red {
   color: var(--red);
   cursor: pointer;
   width: 200px;
-  transition: transform 0.5s ease;
+  transition: 0.3s ease;
 }
 
 .buttons .add-to-cart:hover {
-  transform: scale(1.02);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .buttons .buy-now {
@@ -627,12 +627,11 @@ span.text-red {
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
-  transform: scale(1, 1);
-  transition: transform 0.5s ease;
+  transition: 0.3s ease;
 }
 
 .buttons .buy-now:hover {
-  transform: scale(1.02);
+  background-color: var(--red-hover);
 }
 
 .quantity-desc {

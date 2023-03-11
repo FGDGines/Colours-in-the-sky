@@ -1,14 +1,14 @@
 import { useRef } from 'react'
 import Link from 'next/link'
-import { AiOulineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai'
-// import { TiDeleteOutline } from 'react-icons/ti'
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai'
+import { TiDeleteOutline } from 'react-icons/ti'
 // import { toast } from 'react-hot-toast'
 
 import { useStateContext } from '@/context/StateContext'
 
 export function Cart () {
   const cartRef = useRef()
-  const { totalPrice, totalQuantities, cartItems, setShowCart } = useStateContext()
+  const { totalPrice, totalQuantities, cartItems, setShowCart, incQty, decQty, qty } = useStateContext()
 
   return (
     <div className='cart-wrapper' ref={cartRef}>
@@ -47,9 +47,54 @@ export function Cart () {
                 key={item.id}
               >
                 <img className='cart-product-image' src={item?.image[0]} alt={item?.alt} />
+                <div className='item-desc'>
+                  <div className='flex top'>
+                    <h5>{item.name}</h5>
+                    <h4>${item.price}</h4>
+                  </div>
+                  <div className='flex bottom'>
+                    <div>
+                      <p className='quantity-desc'>
+                        <span className='minus' onClick={decQty}>
+                          <AiOutlineMinus />
+                        </span>
+
+                        <span className='num'>{qty}</span>
+
+                        <span className='plus' onClick={incQty}>
+                          <AiOutlinePlus />
+                        </span>
+                      </p>
+                    </div>
+                    <button
+                      className='remove-item'
+                      type='button'
+                      onClick=''
+                    >
+                      <TiDeleteOutline />
+                    </button>
+                  </div>
+                </div>
               </div>
             )))}
         </div>
+
+        {cartItems.length >= 1 && (
+          <div className='cart-bottom'>
+            <div className='total'>
+              <h3>Subtotál:</h3>
+              <h3>${totalPrice}</h3>
+            </div>
+            <div className='btn-container'>
+              <button
+                className='btn'
+                onClick=''
+                type='button'
+              >Pagar con Stripe
+              </button>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>
