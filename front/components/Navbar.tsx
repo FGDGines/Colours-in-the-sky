@@ -24,9 +24,9 @@ export function Navbar () {
       </button>
 
       <nav className={`nav ${showMenu ? 'active' : ''}`}>
-        <a className='nav__link' href='#' onClick={hideMenu}>Inicio</a>
-        <a className='nav__link' href='#' onClick={hideMenu}>Tienda</a>
-        <a className='nav__link' href='#' onClick={hideMenu}>Contácto</a>
+        <Link className='nav__link' href='/' onClick={hideMenu}>Inicio</Link>
+        <Link className='nav__link' href='#' onClick={hideMenu}>Tienda</Link>
+        <Link className='nav__link' href='#' onClick={hideMenu}>Contácto</Link>
       </nav>
 
       <p className='Logo'>
