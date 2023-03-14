@@ -432,6 +432,7 @@ span.text-red {
 }
 
 .cart-container {
+  user-select: none;
   height: 100vh;
   width: 600px;
   background-color: var(--white);
@@ -539,6 +540,7 @@ span.text-red {
 }
 
 .total {
+  user-select: none;
   display: flex;
   justify-content: space-between;
 }
@@ -570,6 +572,7 @@ span.text-red {
 
 .btn {
   width: 100%;
+  user-select: none;
   max-width: 400px;
   padding: 10px 12px;
   border-radius: var(--btn-rounded);
@@ -690,6 +693,7 @@ span.text-red {
   cursor: pointer;
   width: 200px;
   transition: 0.3s ease;
+  user-select: none;
 }
 
 .buttons .add-to-cart:hover {
@@ -707,6 +711,7 @@ span.text-red {
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s ease;
+  user-select: none;
 }
 
 .buttons .buy-now:hover {
@@ -983,6 +988,7 @@ span.text-red {
 
   .total h3 {
     font-size: 20px;
+    user-select: none;
   }
 
   .track {
