@@ -1,20 +1,33 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { AiOutlineShoppingCart, AiOutlineMenu } from 'react-icons/ai'
+import { AiOutlineShoppingCart, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { Cart } from '@/components'
 import { useStateContext } from '@/context/StateContext'
 
 export function Navbar () {
+  const [showMenu, setShowMenu] = useState(false)
   const { showCart, setShowCart, totalQuantities } = useStateContext()
+
+  const openMenu = () => setShowMenu(!showMenu)
+  const hideMenu = () => setShowMenu(false)
+
   return (
     <div className='navbar-container'>
 
       <button
         type='button'
         className='menu-icon'
+        onClick={openMenu}
       >
-        <AiOutlineMenu />
+        {showMenu ? <AiOutlineClose /> : <AiOutlineMenu />}
       </button>
+
+      <nav className={`nav ${showMenu ? 'active' : ''}`}>
+        <a className='nav__link' href='#' onClick={hideMenu}>Inicio</a>
+        <a className='nav__link' href='#' onClick={hideMenu}>Tienda</a>
+        <a className='nav__link' href='#' onClick={hideMenu}>Contácto</a>
+      </nav>
 
       <p className='Logo'>
         <Link href='/'>
