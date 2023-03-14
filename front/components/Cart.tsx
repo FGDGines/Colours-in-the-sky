@@ -8,10 +8,16 @@ import { useStateContext } from '@/context/StateContext'
 
 export function Cart () {
   const cartRef = useRef()
-  const { totalPrice, totalQuantities, cartItems, setShowCart, incQty, decQty, qty } = useStateContext()
+  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext()
+
+  const hideCart = (e: any) => {
+    if (cartRef.current === e.target) {
+      setShowCart(false)
+    }
+  }
 
   return (
-    <div className='cart-wrapper' ref={cartRef}>
+    <div className='cart-wrapper' onClick={hideCart} ref={cartRef}>
       <div className='cart-container'>
         <button
           type='button'
@@ -55,13 +61,13 @@ export function Cart () {
                   <div className='flex bottom'>
                     <div>
                       <p className='quantity-desc'>
-                        <span className='minus' onClick={decQty}>
+                        <span className='minus' onClick={() => toggleCartItemQuantity(item.id, 'dec')}>
                           <AiOutlineMinus />
                         </span>
 
-                        <span className='num'>{qty}</span>
+                        <span className='num'>{item.quantity}</span>
 
-                        <span className='plus' onClick={incQty}>
+                        <span className='plus' onClick={() => toggleCartItemQuantity(item.id, 'inc')}>
                           <AiOutlinePlus />
                         </span>
                       </p>
@@ -69,7 +75,7 @@ export function Cart () {
                     <button
                       className='remove-item'
                       type='button'
-                      onClick=''
+                      onClick={() => onRemove(item)}
                     >
                       <TiDeleteOutline />
                     </button>

@@ -12,6 +12,8 @@ interface ContextProps {
   decQty: () => void
   setShowCart: (showCart: boolean) => void
   onAdd: (product: ProductType, quantity: number) => void
+  toggleCartItemQuantity: (id: number, value: string) => void
+  onRemove: (product: CartType) => void
 }
 
 const Context = createContext<ContextProps>({} as ContextProps)
@@ -22,6 +24,9 @@ export const StateContext = ({ children }: any) => {
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalQuantities, setTotalQuantities] = useState(0)
   const [qty, setQty] = useState(1)
+
+  let foundProduct: CartType
+  let index: number
 
   const onAdd = (product: ProductType, quantity: number) => {
     const checkProductInCart = cartItems.find((item) => item.id === product.id)
@@ -50,6 +55,31 @@ export const StateContext = ({ children }: any) => {
     toast.success(`${qty} ${product.name} ${qty !== 1 ? 'añadidos' : 'añadido'} al carrito.`)
   }
 
+  const onRemove = (product: CartType) => {
+    foundProduct = cartItems.find((item) => item.id === product.id) as CartType
+    const newCartItems = cartItems.filter((item) => item.id !== product.id)
+    setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity)
+    setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity)
+    setCartItems(newCartItems)
+  }
+
+  const toggleCartItemQuantity = (id: number, value: string) => {
+    foundProduct = cartItems.find((item) => item.id === id) as CartType
+    index = cartItems.findIndex((product) => product.id === id)
+    const newCartItems = cartItems.filter((item) => item.id !== id)
+
+    if (value === 'inc') {
+      setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity + 1 }])
+      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
+      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1)
+    } else if (value === 'dec') {
+      if (foundProduct.quantity <= 1) return
+      setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity - 1 }])
+      setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
+    }
+  }
+
   const incQty = () => setQty((prevQty) => prevQty + 1)
 
   const decQty = () => {
@@ -69,7 +99,9 @@ export const StateContext = ({ children }: any) => {
     incQty,
     decQty,
     onAdd,
-    setShowCart
+    setShowCart,
+    toggleCartItemQuantity,
+    onRemove
   }
 
   return <Context.Provider value={props}>{children}</Context.Provider>
